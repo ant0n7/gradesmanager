@@ -1,4 +1,4 @@
-# gradesmanager
+# Grade Manager
 The grade manager can be used to manage personal school grades for a single person.
 
 ---
