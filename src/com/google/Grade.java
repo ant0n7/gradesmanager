@@ -53,4 +53,8 @@ public class Grade {
     public void setWeighting(double weighting) {
         this.weighting = weighting;
     }
+
+    public void print() {
+        IO.printGrade(this);
+    }
 }

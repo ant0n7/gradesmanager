@@ -1,5 +1,9 @@
 package com.google;
 
+import ch.google.Output;
+import ch.google.Utils;
+import ch.google.Color;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -24,5 +28,52 @@ public class IO {
      */
     public static void readData() throws IOException {
         readData("data.properties");
+    }
+
+    public static void printGrade(Grade grade) {
+        // TODO
+    }
+
+    public static void printSubject(Subject subject) {
+        Output.printBox(subject.getTitle());
+
+
+        for (Grade grade :
+                subject.getGrades()) {
+            printGrade(grade);
+        }
+    }
+
+    public static void printSemesters(GradingManager gradingManager) {
+        Output.printBox("Semesters");
+        for (Semester semester :
+                gradingManager.getSemesters()) {
+            System.out.println(semester.getTitle());
+        }
+        for (int i = 0; i < gradingManager.getSemesters().size(); i++) {
+            Semester semester = gradingManager.getSemesters().get(i);
+            System.out.println(i + " - " + semester.getTitle() + " (" + semester.getAverage() + ")");
+        }
+    }
+
+    public static void printSemester(Semester semester) {
+        Output.printBox(semester.getTitle());
+
+        for (Subject subject :
+                semester.getSubjects()) {
+            System.out.println(Color.BOLD + subject.getTitle() + Color.RESET);
+            System.out.println("\tAverage: " + subject.getAverage());
+        }
+    }
+
+    public static Semester inputSemester() {
+        Output.printBox("Semester Properties");
+        String title = Utils.scanString("Title: ");
+
+        return new Semester(title);
+    }
+
+    public static void printInvalidChoice() {
+        System.out.println("Invalid Choice");
     }
 }

@@ -8,6 +8,8 @@ package com.google;/*
  *  ===============================================
  */
 
+import ch.google.Output;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,11 +49,24 @@ public class Semester {
 
     // Class Methods
 
+    public void manage() {
+        while (true) {
+            printSemester();
+            Output.printMenu(Output.SUB_MENU, title, "1 - View Subjects", "2 - Add Subjects", "3 - Remove Subjects", "4 - Rename Subjects", "0 - Exit");
+
+            break;
+        }
+    }
+
     public double getAverage() {
         return 0;
     }
 
     public boolean getPromotion() {
         return true;
+    }
+
+    private void printSemester() {
+        IO.printSemester(this);
     }
 }
