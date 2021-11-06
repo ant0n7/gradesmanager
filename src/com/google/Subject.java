@@ -50,4 +50,8 @@ public class Subject {
     public double getAverage() {
         return 0;
     }
+
+    public void manage() {
+        // TODO
+    }
 }

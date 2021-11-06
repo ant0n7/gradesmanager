@@ -56,13 +56,16 @@ public class IO {
         }
     }
 
+    /**
+     * Print all subjects of a semester with their average
+     * @param semester Semester whose subjects are printed
+     */
     public static void printSemester(Semester semester) {
-        Output.printBox(semester.getTitle());
+        Output.printBox(semester.getTitle() + " Subjects");
 
-        for (Subject subject :
-                semester.getSubjects()) {
-            System.out.println(Color.BOLD + subject.getTitle() + Color.RESET);
-            System.out.println("\tAverage: " + subject.getAverage());
+        for (int i = 0; i < semester.getSubjects().size(); i++) {
+            Subject subject = semester.getSubjects().get(i);
+            System.out.println(i + " - " + subject + " (" + subject.getAverage() + ")");
         }
     }
 
@@ -75,5 +78,12 @@ public class IO {
 
     public static void printInvalidChoice() {
         System.out.println("Invalid Choice");
+    }
+
+    public static Subject inputSubject() {
+        Output.printBox("Subject Properties");
+        String title = Utils.scanString("Title: ");
+
+        return new Subject(title);
     }
 }
