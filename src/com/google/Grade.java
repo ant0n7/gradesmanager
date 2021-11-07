@@ -8,7 +8,9 @@ package com.google;/*
  *  ===============================================
  */
 
-public class Grade {
+import java.io.Serializable;
+
+public class Grade implements Serializable {
     /**
      * Title of the grade
      */

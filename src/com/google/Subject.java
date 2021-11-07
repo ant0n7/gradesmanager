@@ -11,6 +11,7 @@ package com.google;/*
 import ch.google.Output;
 import ch.google.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author anton
  */
-public class Subject {
+public class Subject implements Serializable {
     private String title;
     private List<Grade> grades;
 

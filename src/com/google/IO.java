@@ -4,8 +4,7 @@ import ch.google.Output;
 import ch.google.Utils;
 import ch.google.Color;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Input Output Handler for project specific tasks
@@ -16,18 +15,51 @@ public class IO {
     /**
      * Read data from a custom file
      * @param fileName Name of the data file
-     * @author anton
+     * @throws IOException File handling
+     * @throws ClassNotFoundException Serialization
      */
-    public static void readData(String fileName) throws IOException {
-        //
+    public static GradingManager readData(String fileName) throws IOException, ClassNotFoundException {
+        FileInputStream file = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(file);
+
+        GradingManager gradingManager = (GradingManager) in.readObject();
+
+        in.close();
+        file.close();
+
+        return gradingManager;
     }
 
     /**
      * Read data from the default data file
-     * @author anton
+     * @throws IOException File handling
+     * @throws ClassNotFoundException Serialization
      */
-    public static void readData() throws IOException {
-        readData("data.properties");
+    public static GradingManager readData() throws IOException, ClassNotFoundException {
+        return readData("data.properties");
+    }
+
+    /**
+     * Save data to a custom file
+     * @param fileName Name of the data file
+     * @throws IOException File handling
+     */
+    public static void saveToFile(String fileName, GradingManager gradingManager) throws IOException {
+        FileOutputStream file = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(file);
+
+        out.writeObject(gradingManager);
+
+        out.close();
+        file.close();
+    }
+
+    /**
+     * Save data to the default data file
+     * @throws IOException File handling
+     */
+    public static void saveToFile(GradingManager gradingManager) throws IOException {
+        saveToFile("data.properties", gradingManager);
     }
 
     public static void printGrade(Grade grade) {

@@ -3,6 +3,7 @@ package com.google;
 import ch.google.Output;
 import ch.google.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Class to manage semesters with their subjects and grades.
  * @author anton
  */
-public class GradingManager {
+public class GradingManager implements Serializable {
     private List<Semester> semesters;
 
     public GradingManager(List<Semester> semesters) {

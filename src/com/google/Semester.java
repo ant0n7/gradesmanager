@@ -11,6 +11,7 @@ package com.google;/*
 import ch.google.Output;
 import ch.google.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * Semester class to manage all subjects and their grades in a single object.
  * @author anton
  */
-public class Semester {
+public class Semester implements Serializable {
     private String title;
     private List<Subject> subjects;
 
