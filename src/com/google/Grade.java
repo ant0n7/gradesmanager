@@ -10,10 +10,12 @@ package com.google;/*
 
 import java.io.Serializable;
 
+/**
+ * Manage grades. Usually for implementation in a Subject-object.
+ *
+ * @author anton
+ */
 public class Grade implements Serializable {
-    /**
-     * Title of the grade
-     */
     private String title;
     private double score;
     private double weighting;
@@ -56,6 +58,9 @@ public class Grade implements Serializable {
         this.weighting = weighting;
     }
 
+    /**
+     * Print a grade to the console
+     */
     public void print() {
         IO.printGrade(this);
     }

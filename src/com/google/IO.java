@@ -12,6 +12,10 @@ import java.io.*;
  * @author anton
  */
 public class IO {
+    /*
+     * DATA SAVING/READING METHODS
+     */
+
     /**
      * Read data from a custom file
      * @param fileName Name of the data file
@@ -67,16 +71,14 @@ public class IO {
         System.out.println(grade.getScore() + " [" + grade.getWeighting() + "]");
     }
 
-    public static void printSubject(Subject subject) {
-        Output.printBox(subject.getTitle());
+    /*
+     * SEMESTER METHODS
+     */
 
-
-        for (Grade grade :
-                subject.getGrades()) {
-            printGrade(grade);
-        }
-    }
-
+    /**
+     * Print all semesters with their average to the console
+     * @param gradingManager Grading manager which contains these semesters
+     */
     public static void printSemesters(GradingManager gradingManager) {
         Output.printBox("Semesters");
 
@@ -99,6 +101,10 @@ public class IO {
         }
     }
 
+    /**
+     * Input a new Semester object from the console user
+     * @return Semester object created by the user
+     */
     public static Semester inputSemester() {
         Output.printBox("Semester Properties");
         String title = Utils.scanString("Title: ");
@@ -106,10 +112,28 @@ public class IO {
         return new Semester(title);
     }
 
-    public static void printInvalidChoice() {
-        System.out.println("Invalid Choice");
+    /*
+     * SUBJECT METHODS
+     */
+
+    /**
+     * Print a Subject object to the console
+     * @param subject Subject object to print to the console
+     */
+    public static void printSubject(Subject subject) {
+        Output.printBox(subject.getTitle());
+
+
+        for (Grade grade :
+                subject.getGrades()) {
+            printGrade(grade);
+        }
     }
 
+    /**
+     * Input a new Subject object from the console user
+     * @return Subject object created by the user
+     */
     public static Subject inputSubject() {
         Output.printBox("Subject Properties");
         String title = Utils.scanString("Title: ");
@@ -117,6 +141,14 @@ public class IO {
         return new Subject(title);
     }
 
+    /*
+     * GRADE METHODS
+     */
+
+    /**
+     * Input a new Grade object from the console user
+     * @return Grade object created by the user
+     */
     public static Grade inputGrade() {
         Output.printBox("Grade Properties");
         String title = Utils.scanString("Title: ");
@@ -124,5 +156,16 @@ public class IO {
         double weighting = Utils.scanRangedDouble(0, 1000000, "Weighting: ");
 
         return new Grade(title, score, weighting);
+    }
+
+    /*
+     * OTHER METHODS
+     */
+
+    /**
+     * Print the message for an invalid choice to the console
+     */
+    public static void printInvalidChoice() {
+        System.out.println("Invalid Choice");
     }
 }

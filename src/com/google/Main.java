@@ -2,10 +2,20 @@ package com.google;
 
 import java.io.IOException;
 
+/**
+ * Main class to start the program
+ * Note: Contains no logic
+ * @author anton
+ */
 public class Main {
 
     public static void main(String[] args) {
-//        GradingManager gm = new GradingManager();
+        /*
+         if data saving doesn't work (also for first run with a new file: remove all code from main and use following lines:
+
+         GradingManager gm = new GradingManager();
+         gm.start();
+         */
         GradingManager gm = null;
         try {
             gm = IO.readData();

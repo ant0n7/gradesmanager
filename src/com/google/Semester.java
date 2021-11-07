@@ -1,12 +1,4 @@
-package com.google;/*
- *  ===============================================
- *  Project:        Grades_Manager
- *  Program:        First Program
- *  Description:    Hello World
- *  Author:         anton
- *  Date:           05.11.2021
- *  ===============================================
- */
+package com.google;
 
 import ch.google.Output;
 import ch.google.Utils;
@@ -49,8 +41,9 @@ public class Semester implements Serializable {
         this.subjects = subjects;
     }
 
-    // Class Methods
-
+    /**
+     * Print managing menu to manage the semester
+     */
     public void manage() {
         while (true) {
             String tempTitle = getTitle().length() < 9 ? " ".repeat(8) + getTitle() + " ".repeat(8) : getTitle();
@@ -85,18 +78,36 @@ public class Semester implements Serializable {
         }
     }
 
+    /**
+     * Rename a subject
+     * @param index Index of the subject object to rename
+     * @param newTitle New title for the subject
+     */
     private void renameSubject(int index, String newTitle) {
         getSubjects().get(index).setTitle(newTitle);
     }
 
+    /**
+     * Remove a subject from the subject list
+     * @param index Index to remove
+     */
     private void removeSubject(int index) {
         getSubjects().remove(index);
     }
 
+    /**
+     * Add a subject to the subject list
+     * @param subject Subject object to add
+     */
     private void addSubject(Subject subject) {
         getSubjects().add(subject);
     }
 
+    /**
+     * Calculate the average of all subjects
+     * Average is rounded to 0.5
+     * @return Rounded average or 0 (if no subjects are available)
+     */
     public double getAverage() {
         double sumAverages = 0;
         int gradedSubjects = 0;
@@ -111,7 +122,18 @@ public class Semester implements Serializable {
         return gradedSubjects > 0 ? sumAverages / getSubjects().size() : 0;
     }
 
+    /**
+     * Checks if the semester is passed
+     * @return Promotion (true = passed; false = failed)
+     */
     public boolean getPromotion() {
         return getAverage() >= 4;
+    }
+
+    /**
+     * Print semester to the console
+     */
+    public void print() {
+        IO.printSemester(this);
     }
 }

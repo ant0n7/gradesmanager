@@ -1,12 +1,4 @@
-package com.google;/*
- *  ===============================================
- *  Project:        Grades_Manager
- *  Program:        First Program
- *  Description:    Hello World
- *  Author:         anton
- *  Date:           05.11.2021
- *  ===============================================
- */
+package com.google;
 
 import ch.google.Output;
 import ch.google.Utils;
@@ -50,7 +42,10 @@ public class Subject implements Serializable {
         this.grades = grades;
     }
 
-    // Class Methods
+    /**
+     * Calculate the average of all grades
+     * @return Average or 0 (if no grades are available)
+     */
     public double getAverage() {
         double sumScoresWithWeights = 0;
         double sumWeights = 0;
@@ -64,6 +59,9 @@ public class Subject implements Serializable {
         return sumScoresWithWeights > 0.0 ? sumScoresWithWeights / sumWeights : 0.0;
     }
 
+    /**
+     * Print managing menu to manage the subject
+     */
     public void manage() {
         while (true) {
             String tempTitle = getTitle().length() < 9 ? " ".repeat(8) + getTitle() + " ".repeat(8) : getTitle();
@@ -95,18 +93,34 @@ public class Subject implements Serializable {
         }
     }
 
+    /**
+     * Add a grade to the grade list
+     * @param grade Grade object to add
+     */
     private void addGrade(Grade grade) {
         getGrades().add(grade);
     }
 
+    /**
+     * Rename a grade
+     * @param index Index of the grade object to rename
+     * @param newTitle New title for the grade
+     */
     private void renameGrade(int index, String newTitle) {
         getGrades().get(index).setTitle(newTitle);
     }
 
+    /**
+     * Remove a grade from the grade list
+     * @param index Index to remove
+     */
     private void removeGrade(int index) {
         getGrades().remove(index);
     }
 
+    /**
+     * Print a subject to the console
+     */
     public void print() {
         IO.printSubject(this);
     }
