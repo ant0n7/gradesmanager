@@ -31,7 +31,8 @@ public class IO {
     }
 
     public static void printGrade(Grade grade) {
-        // TODO
+        System.out.println(Color.BOLD + grade.getTitle() + Color.RESET);
+        System.out.println(grade.getScore() + " [" + grade.getWeighting() + "]");
     }
 
     public static void printSubject(Subject subject) {
@@ -46,10 +47,7 @@ public class IO {
 
     public static void printSemesters(GradingManager gradingManager) {
         Output.printBox("Semesters");
-        for (Semester semester :
-                gradingManager.getSemesters()) {
-            System.out.println(semester.getTitle());
-        }
+
         for (int i = 0; i < gradingManager.getSemesters().size(); i++) {
             Semester semester = gradingManager.getSemesters().get(i);
             System.out.println(i + " - " + semester.getTitle() + " (" + semester.getAverage() + ")");
@@ -85,5 +83,14 @@ public class IO {
         String title = Utils.scanString("Title: ");
 
         return new Subject(title);
+    }
+
+    public static Grade inputGrade() {
+        Output.printBox("Grade Properties");
+        String title = Utils.scanString("Title: ");
+        double score = Utils.scanRangedDouble(1, 6, "Score (1-6): ");
+        double weighting = Utils.scanRangedDouble(0, 1000000, "Weighting: ");
+
+        return new Grade(title, score, weighting);
     }
 }

@@ -52,7 +52,7 @@ public class Semester {
 
     public void manage() {
         while (true) {
-            Output.printMenu(Output.SUB_MENU, title, "1 - View Subjects", "2 - Add Subjects", "3 - Remove Subjects", "4 - Rename Subjects", "0 - Exit");
+            Output.printMenu(Output.MAIN_MENU, title, "1 - View Subjects", "2 - Select Subject (Subject View)", "3 - Add Subjects", "4 - Remove Subjects", "5 - Rename Subjects", "0 - Exit");
             int choice = Utils.scanRangedInt(0, 4, "\t- ");
 
             int index; // for use in some cases of the switch
@@ -60,7 +60,7 @@ public class Semester {
                 case 0:
                     return;
                 case 1:
-                    printSemester();
+                    IO.printSemester(this);
                     break;
                 case 2:
                     index = Utils.scanRangedInt(0, getSubjects().size() - 1, "Subject Index: ");
@@ -80,7 +80,6 @@ public class Semester {
                 default:
                     IO.printInvalidChoice();
             }
-            break;
         }
     }
 
@@ -97,16 +96,16 @@ public class Semester {
     }
 
     public double getAverage() {
-        // TODO: issues/9
-        return 0;
+        double sumAverages = 0;
+
+        for (Subject subject : getSubjects()) {
+            sumAverages += Math.round(subject.getAverage() * 2) / 2.0;
+        }
+
+        return sumAverages / getSubjects().size();
     }
 
     public boolean getPromotion() {
-        // TODO: issues/9
-        return true;
-    }
-
-    private void printSemester() {
-        IO.printSemester(this);
+        return getAverage() >= 4;
     }
 }

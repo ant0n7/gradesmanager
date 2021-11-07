@@ -34,7 +34,7 @@ public class GradingManager {
      */
     public void start() {
         while (true) {
-            Output.printMenu(Output.MAIN_MENU, "Grading Manager", "1 - View Semesters", "2 - Select Semester", "3 - Add Semesters", "4 - Remove Semesters", "5 - Rename Semesters", "0 - Exit");
+            Output.printMenu(Output.MAIN_MENU, "Grading Manager", "1 - View Semesters", "2 - Select Semester (Semester View)", "3 - Add Semesters", "4 - Remove Semesters", "5 - Rename Semesters", "0 - Exit");
             int choice = Utils.scanRangedInt(0, 4, "\t- ");
 
             int index; // for use in some cases of the switch
