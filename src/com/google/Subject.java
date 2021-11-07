@@ -60,12 +60,13 @@ public class Subject {
             sumScoresWithWeights += grade.getScore() * grade.getWeighting();
         }
 
-        return sumScoresWithWeights / sumWeights;
+        return sumScoresWithWeights > 0.0 ? sumScoresWithWeights / sumWeights : 0.0;
     }
 
     public void manage() {
         while (true) {
-            Output.printMenu(Output.MAIN_MENU, title, "1 - View Grades", "2 - Add Grade", "3 - Remove Grade", "4 - Rename Grade", "0 - Exit");
+            String tempTitle = getTitle().length() < 9 ? " ".repeat(8) + getTitle() + " ".repeat(8) : getTitle();
+            Output.printMenu(Output.MAIN_MENU, tempTitle, "1 - View Grades", "2 - Add Grade", "3 - Remove Grade", "4 - Rename Grade", "0 - Exit");
             int choice = Utils.scanRangedInt(0, 4, "\t- ");
 
             int index; // for use in some cases of the switch

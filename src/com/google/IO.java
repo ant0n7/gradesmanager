@@ -63,7 +63,7 @@ public class IO {
 
         for (int i = 0; i < semester.getSubjects().size(); i++) {
             Subject subject = semester.getSubjects().get(i);
-            System.out.println(i + " - " + subject + " (" + subject.getAverage() + ")");
+            System.out.println(i + " - " + subject.getTitle() + " (" + subject.getAverage() + ")");
         }
     }
 

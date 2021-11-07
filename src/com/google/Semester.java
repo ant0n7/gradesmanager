@@ -52,8 +52,9 @@ public class Semester {
 
     public void manage() {
         while (true) {
-            Output.printMenu(Output.MAIN_MENU, title, "1 - View Subjects", "2 - Select Subject (Subject View)", "3 - Add Subjects", "4 - Remove Subjects", "5 - Rename Subjects", "0 - Exit");
-            int choice = Utils.scanRangedInt(0, 4, "\t- ");
+            String tempTitle = getTitle().length() < 9 ? " ".repeat(8) + getTitle() + " ".repeat(8) : getTitle();
+            Output.printMenu(Output.MAIN_MENU, tempTitle, "1 - View Subjects", "2 - Select Subject", "3 - Add Subjects", "4 - Remove Subjects", "5 - Rename Subjects", "0 - Exit");
+            int choice = Utils.scanRangedInt(0, 5, "\t- ");
 
             int index; // for use in some cases of the switch
             switch (choice) {
@@ -97,12 +98,16 @@ public class Semester {
 
     public double getAverage() {
         double sumAverages = 0;
+        int gradedSubjects = 0;
 
         for (Subject subject : getSubjects()) {
-            sumAverages += Math.round(subject.getAverage() * 2) / 2.0;
+            if (subject.getAverage() > 0.0) {
+                gradedSubjects++;
+                sumAverages += Math.round(subject.getAverage() * 2) / 2.0;
+            }
         }
 
-        return sumAverages / getSubjects().size();
+        return gradedSubjects > 0 ? sumAverages / getSubjects().size() : 0;
     }
 
     public boolean getPromotion() {
