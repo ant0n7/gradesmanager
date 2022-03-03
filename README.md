@@ -30,7 +30,7 @@ Add a new subject to an existing school semester to manage school grades for tha
 #### Post Conditions
 * There is a school subject available for further use.
 
-### Add a grade *[Planned]*
+### Add a grade
 Add a grade for an exam (or something else) with the weight to a subject. The average grade will be calculated.
 #### Pre Conditions
 * A school semester with a subject exists
